@@ -13,7 +13,7 @@ function max(value1, value2) {
 
 function findPeak(arr, algo) {
     var len = arr.length;
-    algo = algo || 'bruteForce;'  //Default Method Brute Force
+    algo = algo || 'bruteForce';  //Default Method Brute Force
     if(algo === 'bruteForce') {
         if(len === 0) {
             return;
