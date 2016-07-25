@@ -34,6 +34,8 @@ function findPeak(arr, algo) {
                 }
             }
         }
+    } else {
+        console.log("Under Development");
     }
 }
 
