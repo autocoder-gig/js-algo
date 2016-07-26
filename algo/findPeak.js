@@ -24,19 +24,34 @@ function findPeak(arr, algo) {
         } else {
             for(var i=0; i<len; i++) {
                 if(i===0){
-                    if(arr[i]>=arr[i+1])
+                    if(arr[i]>=arr[i+1]){
                         return arr[i];
+                    }
                 } else if(i===len-1){
-                    if(arr[i]>=arr[i-1])
+                    if(arr[i]>=arr[i-1]){
                         return arr[i];
-                } else if(arr[i-1]<=arr[i]>=arr[i+1]){
+                    }
+                } else if(arr[i-1]<=arr[i] && arr[i]>=arr[i+1]){
                     return arr[i];
                 }
             }
         }
     } else {
-        console.log("Under Development");
+        
     }
 }
 
-console.log(findPeak([2,4,5]));
+//console.log(findPeak([2,4,5]));
+
+
+//console.log(process);
+//console.log(process.argv.__proto__);
+//typeof(process.argv);
+//console.log(process.argv);
+//for(var i = 2; i<process.argv.length;i++){
+console.log(findPeak(process.argv.slice(2,process.argv.length)));
+//}
+
+
+
+
