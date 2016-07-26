@@ -2,8 +2,20 @@
 Author: Gig
 Problem Statement: Find a peak
 Algo: Brute Force, Divide & Conquer
+Use: node findPeak.js [--bruteForce/divideConquer] <integers seperated by space> | eg.: node findPeak.js --divideConquer 3 4 1 3 5 6 9 
 */
-
+var arr_length= process.argv.length;
+function Util(param,fun){
+    if(param[0]==='--bruteForce') {
+        return fun(param.slice(1,arr_length));
+    } else if(param[0]==='--divideConquer') {
+        return fun(param.slice(1,arr_length), 'divideConquer');
+    } else if(!isNaN(param[0])) {
+        return fun(param);
+    } else {
+        return "Wrong parameter!\n How to Use:\n node findpeak.js [--bruteForce/divideConquer] <numbers seperated by space>";
+    }
+}
 function max(value1, value2) {
     if(value1>=value2)
         return value1;
@@ -35,7 +47,7 @@ function findPeak(arr, algo) {
                     return arr[i];
             }
         }
-    } else if(algo === 'divide&conquer'){
+    } else if(algo === 'divideConquer'){
         if(len%2==0)
             var n = len/2;
         else
@@ -43,11 +55,11 @@ function findPeak(arr, algo) {
         if(arr[n]>=arr[n-1] && arr[n]>=arr[n+1]){
             return arr[n];
         } else if(arr[n]<=arr[n-1]) {
-            return findPeak(arr.slice(0,n), 'divide&conquer');
+            return findPeak(arr.slice(0,n), 'divideConquer');
         } else {
-            return findPeak(arr.slice(n+1,len), 'divide&conquer');
+            return findPeak(arr.slice(n+1,len), 'divideConquer');
         }
     }
 }
 
-console.log(findPeak(process.argv.slice(2,process.argv.length),'divide&conquer'));
+console.log(Util(process.argv.slice(2,arr_length),findPeak));
