@@ -17,12 +17,15 @@ function Util(param,fun){
                                           }
                 ), 'divideConquer');
     } else if(!isNaN(param[0])) {
-        return fun(param);
+        return fun(mapNumber(param,function(item){
+                return Number(item);
+            }
+        ));
     } else {
         return "Wrong parameter!\n How to Use:\n node findpeak.js [--bruteForce/divideConquer] <numbers seperated by space>";
     }
 }
-function mapNumber(arr, func){
+function mapNumber(arr, func){ //Custom function for convertion string array to number
     for(var i =0; i<arr.length; i++){
         arr[i]=func(arr[i]);
     }
