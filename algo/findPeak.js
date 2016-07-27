@@ -7,14 +7,26 @@ Use: node findPeak.js [--bruteForce/divideConquer] <integers seperated by space>
 var arr_length= process.argv.length;
 function Util(param,fun){
     if(param[0]==='--bruteForce') {
-        return fun(param.slice(1,arr_length));
+        return fun(mapNumber(param.slice(1,arr_length),function(item){
+                return Number(item);
+            }
+        ));
     } else if(param[0]==='--divideConquer') {
-        return fun(param.slice(1,arr_length), 'divideConquer');
+        return fun(mapNumber(param.slice(1,arr_length),function(item){
+                             return Number(item);
+                                          }
+                ), 'divideConquer');
     } else if(!isNaN(param[0])) {
         return fun(param);
     } else {
         return "Wrong parameter!\n How to Use:\n node findpeak.js [--bruteForce/divideConquer] <numbers seperated by space>";
     }
+}
+function mapNumber(arr, func){
+    for(var i =0; i<arr.length; i++){
+        arr[i]=func(arr[i]);
+    }
+    return arr;
 }
 function max(value1, value2) {
     if(value1>=value2)
@@ -62,4 +74,7 @@ function findPeak(arr, algo) {
     }
 }
 
+function greedyAscent(){
+
+}
 console.log(Util(process.argv.slice(2,arr_length),findPeak));
