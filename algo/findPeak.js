@@ -5,6 +5,11 @@ Algo: Brute Force, Divide & Conquer
 Use: node findPeak.js [--bruteForce/divideConquer] <integers seperated by space> | eg.: node findPeak.js --divideConquer 3 4 1 3 5 6 9 
 */
 var algo = require('./algo');
+
+for(key in algo) {
+    this[key] = algo[key];
+}
+
 (function(global){
 var Util = function(param,fun){
     if(param[0]==='--bruteForce') {
@@ -78,9 +83,9 @@ var findPeak = function(arr, algo) {
     }
 }
 
-global.$.findPeak = findPeak;
-global.$.findPeak.Util = Util
-}(algo));
+global.algo.findPeak = findPeak;
+global.algo.findPeak.Util = Util
+}(this));
 
 var arr_length= process.argv.length;
-console.log(algo.$.findPeak.Util(process.argv.slice(2,arr_length),algo.$.findPeak));
+console.log(this.algo.findPeak.Util(process.argv.slice(2,arr_length),this.algo.findPeak));

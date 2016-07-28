@@ -1,3 +1,3 @@
 (function(global){
-global.algo=global.$={};
+    global.algo=global.$={};
 }(this));
