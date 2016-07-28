@@ -112,6 +112,7 @@ var findPeak = function(arr, algo, indexCorrection) {
 }
 
 global.algo.findPeak = findPeak;
+global.algo.maxArray = maxArray;
 global.algo.findPeak.Util = Util
 }(this));
 
