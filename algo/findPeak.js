@@ -54,7 +54,7 @@ var findPeak = function(arr, algo) {
     } else if(len === 2) {
             return max(arr[0],arr[1]);
     }
-    algo = algo || 'bruteForce';  //Default Method Brute Force
+    algo = algo || 'divideConquer';  //Default Method divide & conquer
     if(algo === 'bruteForce') {
         for(var i=0; i<len; i++) {
             if(i===0){
