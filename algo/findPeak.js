@@ -4,7 +4,8 @@ Problem Statement: Find a peak
 Algo: Brute Force, Divide & Conquer
 Use: node findPeak.js [--bruteForce/divideConquer] <integers seperated by space> | eg.: node findPeak.js --divideConquer 3 4 1 3 5 6 9 
 */
-(function(){
+var algo = require('./algo');
+(function(global){
 var Util = function(param,fun){
     if(param[0]==='--bruteForce') {
         return fun(mapNumber(param.slice(1,arr_length),function(item){
@@ -76,9 +77,10 @@ var findPeak = function(arr, algo) {
         }
     }
 }
-this.algo = this.$ = {};
-this.algo.findPeak = findPeak;
-this.algo.findPeak.Util = Util
-}(this));
+
+global.$.findPeak = findPeak;
+global.$.findPeak.Util = Util
+}(algo));
+
 var arr_length= process.argv.length;
-console.log($.findPeak.Util(process.argv.slice(2,arr_length),$.findPeak));
+console.log(algo.$.findPeak.Util(process.argv.slice(2,arr_length),algo.$.findPeak));
