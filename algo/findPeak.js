@@ -17,7 +17,7 @@ var Util = function(param,fun){
         return fun(mapNumber(param.slice(1,arr_length),function(item){
                 return Number(item);
             }
-        ));
+        ), 'bruteForce');
     } else if(param[0]==='--divideConquer') {
         return fun(mapNumber(param.slice(1,arr_length),function(item){
                              return Number(item);
@@ -38,48 +38,75 @@ var mapNumber = function(arr, func){ //Custom function for convertion string arr
     }
     return arr;
 }
-var max = function(value1, value2) {
-    if(value1>=value2)
-        return value1;
-    else
-        return value2;
+var maxArray = function(inp_arr, indexCorrection) {
+    indexCorrection = indexCorrection || 0;
+    result = {
+        index:null,
+        value:null
+    };
+    if(inp_arr.length===0){
+        return result;
+    }
+    var max=inp_arr[0],
+        index=0;
+    for(var i=1;i<inp_arr.length;i++) {
+           if(inp_arr[i]>max) {
+                max = inp_arr[i];
+                index =i;
+           }
+    }
+    result.index=index+indexCorrection;
+    result.value=max;
+    return result;
 }
 
-var findPeak = function(arr, algo) {
+var findPeak = function(arr, algo, indexCorrection) {
+    indexCorrection = indexCorrection || 0;
+    var result = {
+        index:null,
+        value:null
+    };
     var len = arr.length;
     if(len === 0) {
-            return;
+            return result;
     } else if(len === 1 ) {
-            return arr[0];
+            result.index=0+indexCorrection;
+            result.value = arr[0];
+            return result;
     } else if(len === 2) {
-            return max(arr[0],arr[1]);
+            return maxArray(arr,indexCorrection);
     }
     algo = algo || 'divideConquer';  //Default Method divide & conquer
     if(algo === 'bruteForce') {
         for(var i=0; i<len; i++) {
             if(i===0){
                 if(arr[i]>=arr[i+1]){
-                    return arr[i];
+                    break;
                 }
             } else if(i===len-1){
                 if(arr[i]>=arr[i-1]){
-                    return arr[i];
+                    break;
                 }
             } else if(arr[i-1]<=arr[i] && arr[i]>=arr[i+1]){
-                    return arr[i];
+                break;
             }
         }
+        result.index=i;
+        result.value=arr[i];
+        return result;
     } else if(algo === 'divideConquer'){
         if(len%2==0)
             var n = len/2;
         else
             var n = (len-1)/2;
         if(arr[n]>=arr[n-1] && arr[n]>=arr[n+1]){
-            return arr[n];
+            result.index=n+indexCorrection;
+            result.value = arr[n];
+            return result;
         } else if(arr[n]<=arr[n-1]) {
-            return findPeak(arr.slice(0,n), 'divideConquer');
+            return findPeak(arr.slice(0,n), 'divideConquer', indexCorrection);
         } else {
-            return findPeak(arr.slice(n+1,len), 'divideConquer');
+            return findPeak(arr.slice(n+1,len), 'divideConquer', indexCorrection+n+1);
         }
     }
 }
