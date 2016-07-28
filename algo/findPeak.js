@@ -12,6 +12,7 @@ for(key in algo) {
 
 (function(global){
 var Util = function(param,fun){
+    var arr_length = param.length;
     if(param[0]==='--bruteForce') {
         return fun(mapNumber(param.slice(1,arr_length),function(item){
                 return Number(item);
@@ -87,5 +88,3 @@ global.algo.findPeak = findPeak;
 global.algo.findPeak.Util = Util
 }(this));
 
-var arr_length= process.argv.length;
-console.log(this.algo.findPeak.Util(process.argv.slice(2,arr_length),this.algo.findPeak));
