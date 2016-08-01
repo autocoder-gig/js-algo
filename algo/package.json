@@ -1,0 +1,25 @@
+{
+  "name": "algo",
+  "version": "1.0.0",
+  "description": "Algorithms in JS",
+  "main": "algo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/autocoder-gig/js-algo.git"
+  },
+  "keywords": [
+    "Algorithm",
+    "Artificial",
+    "Intelligence",
+    "ANN"
+  ],
+  "author": "Gig",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/autocoder-gig/js-algo/issues"
+  },
+  "homepage": "https://github.com/autocoder-gig/js-algo#readme"
+}
