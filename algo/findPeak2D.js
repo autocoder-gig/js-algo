@@ -16,10 +16,7 @@ var Util = function(param,fun){
         });
         array_final[i]=array_1d;
     }
-    return fun(array_final,function(item){
-            return Number(item);
-        }
-    );
+    return fun(array_final);
 }
 
 var mapNumber = function(arr, func){ //Custom function for convertion string array to number array | can use .map
@@ -29,30 +26,43 @@ var mapNumber = function(arr, func){ //Custom function for convertion string arr
     return arr;
 }
 
-var max_array = function(arr) {
-    var max;
-    for(var i=0;i<arr.length;i++){
-        if(arr[i]>=arr[i+1]){
-            max=arr[i];
-        }
-    }
-    return max;
-}
-
-var findPeak2D = function(arr) {
-    var len = arr.length;
+var findPeak2D = function(arr, start, height) {
+    console.log(arr);
+    console.log(start);
+    console.log(height);
+    start = start || 0;
+    height = height || arr.length;
+    len = height - start;
     if(len===0){
         return;
     } else if(len===1){
-        return findPeak1D.algo.findPeak.Util(arr[0],findPeak1D.algo.findPeak) 
-    } else {
-
+        return findPeak1D.algo.findPeak.Util(arr[0],findPeak1D.algo.findPeak); 
     }
-    var n=0;
-    if(len%2==0){
-        n=len/2;
+    var n;
+    if(len%2==0) {
+        n = (height+start)/2;
     } else {
-        n = len-1/2;
+        n = (height+start-1)/2;
+    }
+    console.log(n);
+    max=findPeak1D.algo.findPeak.Util(arr[n],findPeak1D.algo.findPeak);
+    if(max.value>=arr[n-1][max.index] && n===1 && len===2) {
+        console.log(':1');
+        return max.value
+        
+    } else if(max.value < arr[n-1][max.index] && n===1 && len===2) {
+        console.log(':2');
+        return findPeak1D.algo.findPeak.Util(arr[n-1],findPeak1D.algo.findPeak);
+
+    } else if(max.value>=arr[n-1][max.index] && max.value>=arr[n+1][max.index]){
+        console.log(':3');
+        return max.value;
+    } else if(max.value<=arr[n-1][max.index]){
+        console.log(':4');
+        return findPeak2D(arr,start,n-1);
+    } else {
+        console.log(':5');
+        return findPeak2D(arr,n+1,len);
     }
 }
 
