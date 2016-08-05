@@ -19,13 +19,6 @@ var Util = function(param,fun){
     return fun(array_final);
 }
 
-var mapNumber = function(arr, func){ //Custom function for convertion string array to number array | can use .map
-    for(var i =0; i<arr.length; i++){
-        arr[i]=func(arr[i]);
-    }
-    return arr;
-}
-
 var findPeak2D = function(arr, start, height) {
     console.log(arr);
     console.log(start);

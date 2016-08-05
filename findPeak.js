@@ -32,33 +32,6 @@ var Util = function(param,fun){
         return "Wrong parameter!\n How to Use:\n node findpeak.js [--bruteForce/divideConquer] <numbers seperated by space>";
     }
 }
-var mapNumber = function(arr, func){ //Custom function for convertion string array to number array | can use .map
-    for(var i =0; i<arr.length; i++){
-        arr[i]=func(arr[i]);
-    }
-    return arr;
-}
-var maxArray = function(inp_arr, indexCorrection) {
-    indexCorrection = indexCorrection || 0;
-    result = {
-        index:null,
-        value:null
-    };
-    if(inp_arr.length===0){
-        return result;
-    }
-    var max=inp_arr[0],
-        index=0;
-    for(var i=1;i<inp_arr.length;i++) {
-           if(inp_arr[i]>max) {
-                max = inp_arr[i];
-                index =i;
-           }
-    }
-    result.index=index+indexCorrection;
-    result.value=max;
-    return result;
-}
 
 var findPeak = function(arr, algo, indexCorrection) {
     indexCorrection = indexCorrection || 0;
