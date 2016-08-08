@@ -1,6 +1,6 @@
 {
   "name": "ai-algo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Algorithms in JS",
   "main": "algo.js",
   "scripts": {

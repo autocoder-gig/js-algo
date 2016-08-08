@@ -1,5 +1,5 @@
-module.export = {
-    maxArray = function(inp_arr, indexCorrection) {
+module.exports = {
+    maxArray : function(inp_arr, indexCorrection) {
         indexCorrection = indexCorrection || 0;
         result = {
             index:null,
@@ -19,12 +19,12 @@ module.export = {
         result.index=index+indexCorrection;
         result.value=max;
         return result;
-    }
+    },
 
-    mapNumber = function(arr, func){
+    mapNumber : function(arr, func){
         for(var i =0; i<arr.length; i++){
             arr[i]=func(arr[i]);
         }
         return arr;
     }
-}
+};
