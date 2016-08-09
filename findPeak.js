@@ -14,19 +14,19 @@ module.exports = {
             return fun(algo.mapNumber(param.slice(1,arr_length),function(item){
                     return Number(item);
                 }
-            ), '--bruteForce');
+            ), 'bruteForce');
         } else if(param[0]==='--divideConquer') {
             return fun(algo.mapNumber(param.slice(1,arr_length),function(item){
                                  return Number(item);
                                               }
-                    ), '--divideConquer');
+                    ), 'divideConquer');
         } else if(!isNaN(param[0])) {
             return fun(algo.mapNumber(param,function(item){
                     return Number(item);
                 }
             ));
         } else {
-            return "Wrong parameter!\n How to Use:\n node findpeak.js [--bruteForce/divideConquer] <numbers seperated by space>";
+            return "Wrong parameter!\n"+howToUse;
         }
     },
     findPeak : function(arr, algorithm, indexCorrection) {
