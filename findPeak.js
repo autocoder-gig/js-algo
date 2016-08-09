@@ -7,18 +7,19 @@ Use: node findPeak.js [--bruteForce/divideConquer] <integers seperated by space>
 
 var algo = require('./algo');
 module.exports = {
-    Util : function(param,fun){
+    howToUse : "How to Use:\n node findpeak.js [--bruteForce/divideConquer] <numbers seperated by space>",
+    Util : function(param,fun) {
         var arr_length = param.length;
         if(param[0]==='--bruteForce') {
             return fun(algo.mapNumber(param.slice(1,arr_length),function(item){
                     return Number(item);
                 }
-            ), 'bruteForce');
+            ), '--bruteForce');
         } else if(param[0]==='--divideConquer') {
             return fun(algo.mapNumber(param.slice(1,arr_length),function(item){
                                  return Number(item);
                                               }
-                    ), 'divideConquer');
+                    ), '--divideConquer');
         } else if(!isNaN(param[0])) {
             return fun(algo.mapNumber(param,function(item){
                     return Number(item);
@@ -47,27 +48,27 @@ module.exports = {
         algorithm = algorithm || 'divideConquer';  //Default Method divide & conquer
         if(algorithm === 'bruteForce') {
             for(var i=0; i<len; i++) {
-                if(i===0){
-                    if(arr[i]>=arr[i+1]){
+                if(i===0) {
+                    if(arr[i]>=arr[i+1]) {
                         break;
                     }
-                } else if(i===len-1){
-                    if(arr[i]>=arr[i-1]){
+                } else if(i===len-1) {
+                    if(arr[i]>=arr[i-1]) {
                         break;
                     }
-                } else if(arr[i-1]<=arr[i] && arr[i]>=arr[i+1]){
+                } else if(arr[i-1]<=arr[i] && arr[i]>=arr[i+1]) {
                     break;
                 }
             }
             result.index=i;
             result.value=arr[i];
             return result;
-        } else if(algorithm === 'divideConquer'){
+        } else if(algorithm === 'divideConquer') {
             if(len%2==0)
                 var n = len/2;
             else
                 var n = (len-1)/2;
-            if(arr[n]>=arr[n-1] && arr[n]>=arr[n+1]){
+            if(arr[n]>=arr[n-1] && arr[n]>=arr[n+1]) {
                 result.index=n+indexCorrection;
                 result.value = arr[n];
                 return result;
