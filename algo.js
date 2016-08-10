@@ -1,3 +1,7 @@
+/* Author : Gig
+ * Problem Statement : All Algo in one place 
+ * Use : algo.<algo_name>(parameter)
+ */
 module.exports = {
     maxArray : function(inp_arr, indexCorrection) {
         indexCorrection = indexCorrection || 0;
