@@ -9,7 +9,7 @@ module.exports = {
             index:null,
             value:null
         };
-        if(inp_arr.length===0){
+        if(inp_arr.length===0) {
             return result;
         }
         var max=inp_arr[0],
@@ -25,10 +25,14 @@ module.exports = {
         return result;
     },
 
-    mapNumber : function(arr, func){
-        for(var i =0; i<arr.length; i++){
+    mapNumber : function(arr, func) {
+        for(var i =0; i<arr.length; i++) {
             arr[i]=func(arr[i]);
         }
         return arr;
+    },
+
+    Array.prototype.pushArr : function(arr, func) {
+        
     }
 };
